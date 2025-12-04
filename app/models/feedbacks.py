@@ -14,5 +14,5 @@ class FeedbacksModel(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     feedback: Mapped[str] = mapped_column(String(10000), nullable=False)
 
-    user_id: Mapped[list["UserModel"]] = relationship(back_populates="feedback")
-    product_id: Mapped[list["ProductModel"]] = relationship(back_populates="feedback")
+    users: Mapped[list["UserModel"]] = relationship(back_populates="feedbacks")
+    products: Mapped[list["ProductModel"]] = relationship(back_populates="feedbacks")

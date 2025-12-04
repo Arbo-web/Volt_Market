@@ -6,6 +6,7 @@ from app.database.database import Base
 
 if TYPE_CHECKING:
     from app.models.charachteristics import CharachteristicsModel
+    from app.models.feedbacks import FeedbacksModel
 
 class ProductModel(Base):
     __tablename__="products"
@@ -17,5 +18,7 @@ class ProductModel(Base):
     cost: Mapped[int] = mapped_column(nullable=False)
     quantity: Mapped[int] = mapped_column(nullable=False)
 
-    charachteristics: Mapped[int] = mapped_column(ForeignKey("charachteristics.id"), nullable=False)
+    charachteristic_id: Mapped[int] = mapped_column(ForeignKey("charachteristics.id"), nullable=False)
     charachteristic: Mapped["CharachteristicsModel"] = relationship(back_populates="products")
+    feedback_id: Mapped[int] = mapped_column(ForeignKey("feedbacks.id"))
+    feedback: Mapped[FeedbacksModel] = relationship(back_populates="products")

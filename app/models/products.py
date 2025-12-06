@@ -21,4 +21,4 @@ class ProductModel(Base):
     charachteristic_id: Mapped[int] = mapped_column(ForeignKey("charachteristics.id"), nullable=False)
     charachteristic: Mapped["CharachteristicsModel"] = relationship(back_populates="products")
     feedback_id: Mapped[int] = mapped_column(ForeignKey("feedbacks.id"))
-    feedback: Mapped[FeedbacksModel] = relationship(back_populates="products")
+    feedback: Mapped["FeedbacksModel"] = relationship(back_populates="products")

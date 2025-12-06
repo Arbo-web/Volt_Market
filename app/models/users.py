@@ -21,4 +21,4 @@ class UserModel(Base):
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), nullable=False)
     role: Mapped["RoleModel"] = relationship(back_populates="users")
     feedback_id: Mapped[int] = mapped_column(ForeignKey("feedbacks.id"))
-    feedback: Mapped[FeedbacksModel] = relationship(back_populates="users")
+    feedback: Mapped["FeedbacksModel"] = relationship(back_populates="users")

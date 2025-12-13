@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String
+from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.database import Base
 
@@ -13,6 +13,9 @@ class FeedbacksModel(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     feedback: Mapped[str] = mapped_column(String(10000), nullable=False)
+    
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    product_id: Mapped[int] = mapped_column(ForeignKey("products.id"), nullable=False)
 
-    users: Mapped[list["UserModel"]] = relationship(back_populates="feedbacks")
-    products: Mapped[list["ProductModel"]] = relationship(back_populates="feedbacks")
+    user: Mapped["UserModel"] = relationship(back_populates="feedbacks")
+    product: Mapped["ProductModel"] = relationship(back_populates="feedbacks")

@@ -49,3 +49,8 @@ class UserNotFoundHTTPError(MyAppHTTPError):
 class InvalidPasswordHTTPError(MyAppHTTPError):
     status_code = 401
     detail = "Неверный пароль"
+
+
+class IsNotAdminHTTPError(MyAppHTTPError):
+    status_code = 403
+    detail = "Недостаточно прав"
